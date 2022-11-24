@@ -5,7 +5,7 @@ import Presentation.*;
 
 public class BankApplication {
     public static void main(String[] args) {
-        System.out.println("4ㅏㄹ려조 은행입니다.");
+        System.out.println("4ㅏㄹ려조 은행\uD83C\uDFE6입니다.");
         System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
         MainBankMenu mainBankMenu = new MainBankMenu();
     }
