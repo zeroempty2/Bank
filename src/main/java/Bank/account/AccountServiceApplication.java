@@ -53,8 +53,8 @@ public class AccountServiceApplication {
     public void updateName(int id, String name){
         accountInfoRepository.updateName(id, name);
     }
-    public String updatePassword(int id, String password) {
-        return accountInfoRepository.updatePassword(id, password);
+    public void updatePassword(int id, String password) {
+        accountInfoRepository.updatePassword(id, password);
     }
 
     public int getDBAccountNumberByNameForTransaction(String name){
@@ -63,7 +63,6 @@ public class AccountServiceApplication {
     public Account getAccount(int id){
         return accountInfoRepository.getAccount(id);
     }
-
 
 }
 

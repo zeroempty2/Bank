@@ -39,9 +39,7 @@ public class AccountInfoRepository {
             System.out.println("계좌번호 : " + key + " 이름 : " + name);
         }
     }
-    public Iterator getAccountList(){
-        return accountDB.keySet().iterator();
-    }
+
     public int getDBAccountNumberByNameForTransaction(String name) {
         int accountNumber = 0;
         Iterator accountList = accountDB.keySet().iterator();
@@ -119,36 +117,32 @@ public class AccountInfoRepository {
     public void deleteAccount(int id){
         accountDB.remove(id);
     }
-    public int deposit(int id, int balance){
+    public void deposit(int id, int balance){
         Account account = (Account) accountDB.get(id);
-        int listBalance = 0;
+
         for (AccountInfo accountInfo : account.getAccountInfo()) {
-            listBalance = accountInfo.setBalance(accountInfo.getBalance() + balance);
+            accountInfo.setBalance(accountInfo.getBalance() + balance);
         }
-        return listBalance;
     }
-    public int withdraw(int id, int balance){
+    public void withdraw(int id, int balance){
         Account account = (Account) accountDB.get(id);
-        int listBalance = 0;
+
         for (AccountInfo accountInfo : account.getAccountInfo()) {
-            listBalance = accountInfo.setBalance(accountInfo.getBalance() - balance);
+            accountInfo.setBalance(accountInfo.getBalance() - balance);
         }
-        return listBalance;
     }
-    public String updateName(int id, String name){
+    public void updateName(int id, String name){
         Account account = (Account) accountDB.get(id);
-        String listName = null;
+
         for (AccountInfo accountInfo : account.getAccountInfo()) {
-            listName = accountInfo.setName(name);
+            accountInfo.setName(name);
         }
-        return listName;
     }
-    public String updatePassword(int id, String password){
+    public void updatePassword(int id, String password){
         Account account = (Account) accountDB.get(id);
-        String listPassword = null;
+
         for (AccountInfo accountInfo : account.getAccountInfo()) {
-            listPassword = accountInfo.setPassword(password);
+             accountInfo.setPassword(password);
         }
-        return listPassword;
     }
 }

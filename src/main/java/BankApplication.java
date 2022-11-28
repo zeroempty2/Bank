@@ -102,7 +102,6 @@ public class BankApplication {
                 case 4:
                     if(accountService.findIsEmpty()){
                         System.out.println("생성된 계좌가 없습니다");
-
                     }
                     else{
                         accountService.showAccountList();}

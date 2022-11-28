@@ -55,13 +55,7 @@ public class TransactionInfoRepository
         }
 
         }
-    public void showTransactionListTest(int id) {
-        Transaction transaction = (Transaction) transactionDB.get(id);
-        for (TransactionInfoList transactionInfoList : transaction.getTransactionInformationList()) {
-             TransactionInfoList transactionInfoList1 = transactionInfoList;
-            System.out.println(transactionInfoList1);
-            }
-        }
+
     public void TransactionListSave(int id,List<TransactionInfo> transactionInfoList ) {
         Transaction transaction = (Transaction) transactionDB.get(id);
         transaction.addTransactionInformationList(transactionInfoList);

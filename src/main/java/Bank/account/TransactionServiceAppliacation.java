@@ -16,9 +16,7 @@ public class TransactionServiceAppliacation {
     public void showTransactionList(int id){
         transactionInfoRepository.showTransactionList(id);
     }
-    public void showTransactionListTest(int id){
-        transactionInfoRepository.showTransactionListTest(id);
-    }
+
     public void TransactionListSave(int id,List<TransactionInfo> transactionInfoList ){
         transactionInfoRepository.TransactionListSave(id,transactionInfoList);
     }
