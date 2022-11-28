@@ -1,4 +1,3 @@
-
 import Bank.account.*;
 import presentation.*;
 
@@ -35,7 +34,7 @@ public class BankApplication {
                     int balance = Integer.parseInt(scanner.nextLine());
 
 
-                    AccountInfo accountInfo = new AccountInfo(creationname,password,balance);
+                    AccountInfo accountInfo = new AccountInfo(creationname, password, balance);
                     accountInformations.add(accountInfo);
                     TransactionInfo transactionInfo = new TransactionInfo();//거래내역 default값 생성
                     transactionInfos.add(transactionInfo);//default값을 List에 담음
@@ -43,34 +42,33 @@ public class BankApplication {
                     transactionInfoLists.add(transactionInfoList);//transaction을 리스트에 담음
 
 
-                    accountService.saveAccount(accountService.accountNumberCreate(),accountInformations);
-                    transactionService.saveTransaction(accountService.getDBAccountNumberByNameForTransaction(creationname),transactionInfoLists);
-                    transactionService.updateBalance(accountService.getDBAccountNumberByNameForTransaction(creationname),balance);
-                    transactionService.updateDepositWithdrawStatus(accountService.getDBAccountNumberByNameForTransaction(creationname),"입금(계좌생성)");
-                    transactionService.updateTransactionAmount(accountService.getDBAccountNumberByNameForTransaction(creationname),balance);
-                    transactionService.updateTransactionBank(accountService.getDBAccountNumberByNameForTransaction(creationname),"이건 4ㅏ기조");
+                    accountService.saveAccount(accountService.accountNumberCreate(), accountInformations);
+                    transactionService.saveTransaction(accountService.getDBAccountNumberByNameForTransaction(creationname), transactionInfoLists);
+                    transactionService.updateBalance(accountService.getDBAccountNumberByNameForTransaction(creationname), balance);
+                    transactionService.updateDepositWithdrawStatus(accountService.getDBAccountNumberByNameForTransaction(creationname), "입금(계좌생성)");
+                    transactionService.updateTransactionAmount(accountService.getDBAccountNumberByNameForTransaction(creationname), balance);
+                    transactionService.updateTransactionBank(accountService.getDBAccountNumberByNameForTransaction(creationname), "이건 4ㅏ기조");
                     System.out.println("계좌가 생성되었습니다");
-                    System.out.println(creationname + "님의 계좌번호는" + accountService.getDBAccountNumberByName(creationname)+"입니다");
+                    System.out.println(creationname + "님의 계좌번호는" + accountService.getDBAccountNumberByName(creationname) + "입니다");
                     System.out.println("");
                     mainBankMenu.run();
                     break;
 
                 case 2:
                     Scanner scanner2 = new Scanner(System.in);
-                    if (accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
                         mainBankMenu.run();
                         break;
-                    }else{
+                    } else {
                         System.out.println("이름을 입력해 주세요");
                         String findAccountByName = scanner2.nextLine();
-                        if(accountService.findDBAccountNameEmpty(findAccountByName)){
+                        if (accountService.findDBAccountNameEmpty(findAccountByName)) {
                             System.out.println("입력하신 이름의 계좌가 없습니다");
                             mainBankMenu.run();
                             break;
-                        }
-                        else{
-                            System.out.println(findAccountByName + "님의 계좌번호는 " + accountService.getDBAccountNumberByName(findAccountByName)+ "입니다");
+                        } else {
+                            System.out.println(findAccountByName + "님의 계좌번호는 " + accountService.getDBAccountNumberByName(findAccountByName) + "입니다");
                         }
                     }
                     mainBankMenu.run();
@@ -78,20 +76,18 @@ public class BankApplication {
                 case 3:
                     Scanner scanner3 = new Scanner(System.in);
 
-                    if (accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
                         mainBankMenu.run();
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("계좌번호를 입력해 주세요");
                         int accountNumber = Integer.parseInt(scanner3.nextLine());
                         if (accountService.findNoAccount(accountNumber)) {
                             System.out.println("존재하지 않는 계좌번호입니다");
                             mainBankMenu.run();
                             break;
-                        }
-                        else{
+                        } else {
                             Account account = accountService.getAccount(accountNumber);
                             new PleaseEnterPassword(account);
                         }
@@ -100,22 +96,21 @@ public class BankApplication {
                     }
 
                 case 4:
-                    if(accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
+                    } else {
+                        accountService.showAccountList();
                     }
-                    else{
-                        accountService.showAccountList();}
                     mainBankMenu.run();
                     break;
 
                 case 5:
                     Scanner scanner5 = new Scanner(System.in);
-                    if (accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
                         mainBankMenu.run();
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("계좌번호를 입력해 주세요");
                         int deleteAccountNumber = Integer.parseInt(scanner5.nextLine());
 
@@ -140,12 +135,11 @@ public class BankApplication {
                     }
                 case 6:
                     Scanner scanner6 = new Scanner(System.in);
-                    if (accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
                         mainBankMenu.run();
                         break;
-                    }
-                    else {
+                    } else {
                         System.out.println("계좌번호를 입력해 주세요");
                         int accountNumber = Integer.parseInt(scanner6.nextLine());
 
@@ -174,27 +168,25 @@ public class BankApplication {
                     }
                 case 7:
                     Scanner scanner11 = new Scanner(System.in);
-                    if (accountService.findIsEmpty()){
+                    if (accountService.findIsEmpty()) {
                         System.out.println("생성된 계좌가 없습니다");
                         mainBankMenu.run();
                         break;
-                    }
-                    else{
+                    } else {
                         System.out.println("계좌번호를 입력해 주세요");
                         int accountNumber = Integer.parseInt(scanner11.nextLine());
 
-                        if(accountService.findNoAccount(accountNumber)){
+                        if (accountService.findNoAccount(accountNumber)) {
                             System.out.println("존재하지 않는 계좌번호입니다");
                             mainBankMenu.run();
                             break;
-                        }
-                        else {
+                        } else {
                             System.out.println("비밀번호를 입력해주십시오");
                             String passwords = scanner11.nextLine();
                             if (accountService.findCollectPassword(accountNumber, passwords)) {
                                 System.out.println("변경하실 비밀번호를 입력해 주십시오");
                                 String updatePassword = scanner11.nextLine();
-                                accountService.updatePassword(accountNumber,updatePassword);
+                                accountService.updatePassword(accountNumber, updatePassword);
                                 System.out.println("비밀번호 변경이 완료되었습니다");
                             } else {
                                 System.out.println("비밀번호가 일치하지 않습니다");
@@ -208,10 +200,8 @@ public class BankApplication {
 
                 case 8:
                     Scanner scanner7 = new Scanner(System.in);
-                    System.out.println("업무를 선택해 주십시오");
-                    System.out.println("1. 입금하기");
-                    System.out.println("2. 출금하기");
-                    System.out.println("3. 돌아가기");
+                   DepositWithdraw depositWithdraw = new DepositWithdraw();
+                   depositWithdraw.run();
 
                     int seletNumber = mainSelect.nextInt();
                     if (seletNumber == 1) {
@@ -255,49 +245,44 @@ public class BankApplication {
                             mainBankMenu.run();
                             break;
                         }
-                    }
-                    else if(seletNumber == 2){
+                    } else if (seletNumber == 2) {
                         List<TransactionInfo> transactionInfos4 = new ArrayList<>();
-                        if (accountService.findIsEmpty()){
+                        if (accountService.findIsEmpty()) {
                             System.out.println("생성된 계좌가 없습니다");
                             mainBankMenu.run();
                             break;
-                        }
-                        else{
+                        } else {
                             System.out.println("계좌번호를 입력해 주세요");
                             int accountNumber = Integer.parseInt(scanner7.nextLine());
 
-                            if(accountService.findNoAccount(accountNumber)){
+                            if (accountService.findNoAccount(accountNumber)) {
                                 System.out.println("존재하지 않는 계좌번호입니다");
                                 mainBankMenu.run();
                                 break;
-                            }
-                            else {
+                            } else {
                                 System.out.println("비밀번호를 입력해주십시오");
                                 String passwords = scanner7.nextLine();
                                 if (accountService.findCollectPassword(accountNumber, passwords)) {
                                     System.out.println("현재 잔액은 " + accountService.getDBBalance(accountNumber) + "원 입니다.");
                                     System.out.println("출금하실 금액을 입력하여 주십시오");
                                     int whitdrawMoney = Integer.parseInt(scanner7.nextLine());
-                                    if(whitdrawMoney > accountService.getDBBalance(accountNumber)){
+                                    if (whitdrawMoney > accountService.getDBBalance(accountNumber)) {
                                         System.out.println("잔액이 부족합니다");
                                         mainBankMenu.run();
                                         break;
-                                    }
-                                    else{
-                                        accountService.withdraw(accountNumber,whitdrawMoney);
+                                    } else {
+                                        accountService.withdraw(accountNumber, whitdrawMoney);
                                         System.out.println("거래하시는 은행을 입력하여 주십시오");
                                         String bankName = scanner7.nextLine();
 
-                                        TransactionInfoUpdate transactionInfo4 = new TransactionInfoUpdate("출금",whitdrawMoney,bankName,accountService.getDBBalance(accountNumber));
+                                        TransactionInfoUpdate transactionInfo4 = new TransactionInfoUpdate("출금", whitdrawMoney, bankName, accountService.getDBBalance(accountNumber));
                                         transactionInfos4.add(transactionInfo4);
-                                        transactionService.TransactionListSave(accountNumber,transactionInfos4);
+                                        transactionService.TransactionListSave(accountNumber, transactionInfos4);
 
                                         System.out.println("출금이 완료되었습니다");
                                         System.out.println("현재 잔액은 " + accountService.getDBBalance(accountNumber) + "원 입니다.");
                                     }
-                                }
-                                else {
+                                } else {
                                     System.out.println("비밀번호가 일치하지 않습니다");
                                     mainBankMenu.run();
                                     break;
@@ -306,8 +291,7 @@ public class BankApplication {
                             mainBankMenu.run();
                             break;
                         }
-                    }
-                    else if(seletNumber == 3){
+                    } else if (seletNumber == 3) {
                         mainBankMenu.run();
                         break;
                     }
