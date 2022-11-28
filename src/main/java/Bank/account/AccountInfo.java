@@ -20,17 +20,14 @@ public class AccountInfo {
     public String getPassword(){
         return password;
     }
-    public int setBalance(int balance){
+    public void setBalance(int balance){
         this.balance = balance;
-        return balance;
     }
-    public String setName(String name){
+    public void setName(String name){
         this.name = name;
-        return name;
     }
-    public String setPassword(String password){
+    public void setPassword(String password){
         this.password = password;
-        return password;
     }
 
 }
