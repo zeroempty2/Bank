@@ -93,6 +93,9 @@ public class TransactionInfoRepository
             }
         }
     }
+    public void deleteTransaction(int id){
+        transactionDB.remove(id);
+    }
 
 }
 

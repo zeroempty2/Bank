@@ -123,6 +123,7 @@ public class BankApplication {
                             String deletePassword = scanner5.nextLine();
                             if (accountService.findCollectPassword(deleteAccountNumber, deletePassword)) {
                                 accountService.deleteAccount(deleteAccountNumber);
+                                transactionService.deleteTransaction(deleteAccountNumber);
                                 System.out.println("계좌가 삭제되었습니다.");
                             } else {
                                 System.out.println("비밀번호가 일치하지 않습니다");
