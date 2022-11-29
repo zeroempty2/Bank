@@ -32,4 +32,7 @@ public class TransactionServiceAppliacation {
     public void updateTransactionBank(int id, String BankName){
         transactionInfoRepository.updateTransactionBank(id,BankName);
     }
+    public void deleteTransaction(int id){
+        transactionInfoRepository.deleteTransaction(id);
+    }
 }

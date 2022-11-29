@@ -75,7 +75,7 @@ public class AccountInfoRepository {
             for (AccountInfo accountInfo1 : account.getAccountInfo()) {
                 listName = accountInfo1.getName();
             }
-            if (listName.equals(name)) {
+            if (Objects.requireNonNull(listName).equals(name)) {
                 accountNumberList.add(key);
             }
         }
@@ -91,7 +91,7 @@ public class AccountInfoRepository {
                 listName = accountInfo1.getName();
             }
         }
-        if (listName.equals(name)) {
+        if (Objects.requireNonNull(listName).equals(name)) {
             return false;
         } else {
             return true;
